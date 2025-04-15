@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import { getFirestore, collection, addDoc, getDocs, orderBy, query, onSnapshot, deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL, uploadString, deleteObject } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -15,4 +16,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const authService = getAuth(app);
 export const dbService = getFirestore(app);
-export { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, collection, addDoc, getDocs, orderBy, query, onSnapshot, deleteDoc, doc, updateDoc };
+export const storageService = getStorage(app, 'gs://nwitter-c8ed5.firebasestorage.app');
+export { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, collection, addDoc, getDocs, orderBy, query, onSnapshot, deleteDoc, doc, updateDoc, ref, uploadBytes, getDownloadURL, uploadString, deleteObject };
